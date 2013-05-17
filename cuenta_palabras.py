@@ -1,12 +1,15 @@
+import sys  # Libreria que permite aumentar la profundidad de la recursion 
+sys.setrecursionlimit(10000)
+
 print("Cuenta palabras.")
 
 # Función para contar palabras.
 def cuenta_palabras(dicci):
     if (len(dicci) > 0):    # Si el largo del diccionario es mayor que cero.
         pal = list(dicci.items())[0]    # En pal se guarda la primera tupla del diccionario como una lista.
-        cantidad = int(pal[1])    # En cantidad se guarda el valor que tiene la tupla.
-        dicci.popitem()    # Se elimina el primer dato del diccionario.
-        return (cuenta_palabras(dicci) + cantidad)    # Se retorna el diccionario mas el valor de cada suma anterior.
+        palaux = str(pal[0])
+        aux = dicci.pop(palaux)    # Se elimina el primer dato del diccionario y se retorna su valor.
+        return (cuenta_palabras(dicci) + aux)    # Se retorna el diccionario mas el valor de cada suma anterior.
     else:
         return (0)    # Si se llega al final del diccionario se retorna el total de la suma.
      
